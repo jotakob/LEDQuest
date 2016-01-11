@@ -14,6 +14,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
 
+    private float defZoom = 15f;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,9 +40,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng museum = new LatLng(52.9927425, 6.5642061);
+
+        // Add a marker in Assen and move the camera
+        LatLng assenStation = new LatLng(52.992208, 6.5704654);
+        mMap.addMarker(new MarkerOptions().position(assenStation).title("Assen Station"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(assenStation, defZoom));
+        mMap.getMaxZoomLevel();
     }
 }
